@@ -1,0 +1,78 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+
+<dom-module id="orange-banana">
+    
+  <template>
+    <style>
+      :host {
+        padding: 5px;
+        color: rgb(255, 166, 0, 0.5);
+        border: rgb(34, 178, 94) 5px solid;
+        display: block;
+      }
+      #banana-peels{
+        color:mediumvioletred;
+        font-size: x-large;
+      }
+    </style>
+    <paper-button on-click="_myname">Click me</paper-button>
+    <h2> I'm an orange banana! Peeled on the [[peels.1]]</h2>
+
+    <ul id="banana-peels">
+      <template is="dom-repeat" items="[[peels]]">
+        <li on-click="_shazam">[[item]]</li>
+      </template>
+    </ul>
+    <paper-button class="custom orange" on-click="startajax">link</paper-button>
+    <iron-ajax id="ajaxyc" handle-as="json"on-response="_handleyc"></iron-ajax>
+
+  </template>
+
+  <script>
+    class OrangeBanana extends Polymer.Element {
+      static get is() { return 'orange-banana'; }
+      static get properties() {
+        return {
+            banana:{
+              type: String,
+              value:"Banannananananan ... Batmaaaan!"
+            },
+            peels:{
+              type: Array,
+              value:[
+                "left",
+                "right",
+                "middle"
+              ]
+            }
+        };
+      }
+      _shazam(){
+        console.log("Shazam!");
+      }
+      _myname(){
+          alert(this.banana);
+      }
+
+      startajax(){
+        console.log("My message here");
+        var ajax = this.$.ajaxyc;
+        ajax.url = "http://localhost:8085/fruits";
+        ajax.generateRequest();
+      }
+      
+      _handleyc(response){
+        console.log(response);
+        alert(response.detail.__data.response[0].name);
+        for(var x=0; x < response.detail.__data.response.length ; x++){
+          this.push('peels', response.detail.__data.response[x].name);
+        }
+      }
+    }
+
+    window.customElements.define(OrangeBanana.is, OrangeBanana);
+  </script>
+
+</dom-module>

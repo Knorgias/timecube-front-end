@@ -1,0 +1,75 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/iron-input/iron-input.html">
+
+<dom-module id="my-element">
+  <template>
+    <style>
+      :host {
+        padding: 5px;
+        border: rgb(34, 178, 94) 5px solid;
+        display: block;
+      }
+      .pirate{
+        color: rgb(48, 85, 187);
+        text-align: center;
+      }
+      h1{
+        text-align: left;
+        color:rgba(8, 148, 8, 0.5);
+        background-color: gold;
+        padding: 20px;
+        margin: 50px;
+      }
+    </style>
+    
+    <h2 class="pirate">Hello [[persons.1]]! You are at [[building]]</h2>
+    <h1>An h1 header to the left, just for fun</h1>
+    <iron-input allowed-pattern="[0-9]">
+      <input placeholder="Type something.." value="{{friend::input}}">
+    </iron-input>
+    <div>You typed: {{friend}}</div>
+  </template>
+
+  <script>
+    /**
+     * `my-element`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class MyElement extends Polymer.Element {
+      static get is() { return 'my-element'; }
+      static get properties() {
+        return {
+          friend:{
+            type: String,
+            value: ""
+          },
+          prop1: {
+            type: String,
+            value: 'my-element'
+          },
+          building:{
+            type: String,
+            value: 'Burj Khalifa'
+          },
+          age:{
+            type: Number,
+            value: 24
+          },
+          persons:{
+            //type: Array,
+             value: [
+              "fred",
+              "kostas"
+            ]
+          }
+        };
+      }
+    }
+
+    window.customElements.define(MyElement.is, MyElement);
+  </script>
+</dom-module>

@@ -1,0 +1,50 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="./orange-banana.html">
+<link rel="import" href="./my-polymer-element.html">
+
+<dom-module id="zeus-element">
+    
+  <template>
+    <style>
+      :host {
+        padding: 5px;
+        border: rgb(34, 178, 94) 2px solid;
+        display: block;
+      }
+      paper-toolbar{
+        position: sticky;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        margin-bottom: 50px;
+      }
+    </style>
+
+    <!-- <paper-toolbar>
+      <paper-icon-button slot="top" icon="menu" on-tap="menuAction"></paper-icon-button>
+      <div slot="top" class="title">Title</div>
+      <paper-icon-button slot="top" icon="more-vert" on-tap="moreAction"></paper-icon-button>
+    </paper-toolbar> -->
+
+
+  </template>
+
+  <script>
+    class ZeusElement extends Polymer.Element {
+      static get is() { return 'zeus-element'; }
+      static get properties() {
+        return {
+            greekGod:{
+                type: String,
+                value:"Zeus"
+            }
+        };
+      }
+    }
+
+    window.customElements.define(ZeusElement.is, ZeusElement);
+  </script>
+
+</dom-module>
