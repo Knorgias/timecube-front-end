@@ -2,9 +2,11 @@
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 
+
 <dom-module id="orange-banana">
-    
+  <!-- My Template -->
   <template>
+    <!-- My styles -->
     <style>
       :host {
         padding: 5px;
@@ -17,19 +19,28 @@
         font-size: x-large;
       }
     </style>
+    <!-- My styles END -->
+
     <paper-button on-click="_myname">Click me</paper-button>
     <h2> I'm an orange banana! Peeled on the [[peels.1]]</h2>
 
+    <!-- My DOM-repeat -->
     <ul id="banana-peels">
       <template is="dom-repeat" items="[[peels]]">
         <li on-click="_shazam">[[item]]</li>
       </template>
     </ul>
+    <!-- My DOM-repeat END -->
+
+    <!-- My AJAX elements -->
     <paper-button class="custom orange" on-click="startajax">link</paper-button>
     <iron-ajax id="ajaxyc" handle-as="json"on-response="_handleyc"></iron-ajax>
+    <!-- My AJAX elements END -->
 
   </template>
+  <!-- My Template END -->
 
+  <!-- My scripts -->
   <script>
     class OrangeBanana extends Polymer.Element {
       static get is() { return 'orange-banana'; }
@@ -59,7 +70,7 @@
       startajax(){
         console.log("My message here");
         var ajax = this.$.ajaxyc;
-        ajax.url = "http://localhost:8085/fruits";
+        ajax.url = "http://localhost:8085/login";
         ajax.generateRequest();
       }
       
@@ -74,5 +85,6 @@
 
     window.customElements.define(OrangeBanana.is, OrangeBanana);
   </script>
+  <!-- My scripts END -->
 
 </dom-module>
