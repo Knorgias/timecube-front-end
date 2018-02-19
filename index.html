@@ -11,6 +11,53 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+      function loginUser(){
+        var account = '{ "username":"fred","password":"abc"}';
+        //account = JSON.stringify(account);
+        //ajaxData("GET", "http://localhost:8083/login", "go", account);
+//        basicTest();
+//        basicTestPost();
+        ajaxData();
+      }
+      function basicTestPost(){
+        alert("postbasic test");
+        xhr= new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            alert(xhr.responseText);
+          }
+        };
+        xhr.open("POST", "http://localhost:8083/logintest", true);
+        xhr.setRequestHeader("Content-type", "application/json");
+        xhr.send('{"username":"fred"}');
+      }
+      function basicTest(){
+        xhr= new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            alert(xhr.responseText);
+          }
+        };
+        xhr.open("GET", "http://localhost:8083/login", true);
+        xhr.send();
+      }
+
+ //     function ajaxData(typeRequest, url, callback, objectToSend){
+        function ajaxData(){
+        var data={};
+        data.username = document.getElementById("username").value;
+        data.password = document.getElementById("password").value;
+        data = JSON.stringify(data);
+        $.ajax({
+          url: "http://localhost:8083/login",
+          data: data,
+          type: "POST",
+          beforeSend: function(xhr){xhr.setRequestHeader('Content-type', 'application/json');},
+          success: function(data) { console.log(data); }
+        });
+      }
+    </script>
 
     <link href="./css/bootstrap-datetimepicker.css" rel="stylesheet" media="screen">
         <!-- Favicon code -->
@@ -51,7 +98,7 @@
           <div class="panel-heading">Login with your credentials</div>
           <br>
           <div class="panel-body">
-            <form action="/my-days-overview.html">
+          <!--  <form action="/my-days-overview.html">-->
               <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                 <input type="text" class="form-control" id="username" placeholder="Username" name="username">
@@ -67,9 +114,9 @@
               </div>
               <br>
               <div class="text-center">
-                  <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                  <button type="submit" class="btn btn-primary btn-lg" onclick="loginUser()">Login</button>
               </div>
-            </form>
+<!--            </form>  -->
           </div>
         </div>
       </div>
