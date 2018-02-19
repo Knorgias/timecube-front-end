@@ -2,7 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="import" href="./my_components/zeus-element.html">
+    <!-- My own scripting -->
+    <script src="./js/my-scripting.js"></script>
+    <!-- My own scripting END -->
+
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -96,6 +99,7 @@
                         <th>Hours</th>
                         <th>Comments</th>
                         <th>State</th>
+                        <th><button class="btn btn-primary" onclick="getOvierview()">Refresh</button></th>
                         </tr>
                     </thead>
                     <tbody>
