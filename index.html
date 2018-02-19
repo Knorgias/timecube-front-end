@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="import" href="./my_components/zeus-element.html">
+<!--    <link rel="import" href="./my_components/zeus-element.html">  -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -12,49 +12,36 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
+     // window.onload = function () {
+          var loginStatus = sessionStorage.getItem("loginDetails");  
+          console.log(loginStatus);
+          if(loginStatus == "aproved"){
+            document.location = '/my-days-overview.html'; 
+          }
+      //}
       function loginUser(){
-        var account = '{ "username":"fred","password":"abc"}';
-        //account = JSON.stringify(account);
-        //ajaxData("GET", "http://localhost:8083/login", "go", account);
-//        basicTest();
-//        basicTestPost();
-        ajaxData();
+        var loginData={};
+        loginData.username = document.getElementById("username").value;
+        loginData.password = document.getElementById("password").value;
+        loginData = JSON.stringify(loginData);
+        ajaxData("POST", "http://localhost:8083/login", loginResponse, loginData);
       }
-      function basicTestPost(){
-        alert("postbasic test");
-        xhr= new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            alert(xhr.responseText);
-          }
-        };
-        xhr.open("POST", "http://localhost:8083/logintest", true);
-        xhr.setRequestHeader("Content-type", "application/json");
-        xhr.send('{"username":"fred"}');
+      function loginResponse(response){
+        if(response.statuCode == 0){
+          document.location = '/my-days-overview.html'; 
+          sessionStorage.setItem("loginDetails","aproved");       
+        }
+        if(response.statuCode == 1){
+          alert("You are not logged in correct");
+        }
       }
-      function basicTest(){
-        xhr= new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            alert(xhr.responseText);
-          }
-        };
-        xhr.open("GET", "http://localhost:8083/login", true);
-        xhr.send();
-      }
-
- //     function ajaxData(typeRequest, url, callback, objectToSend){
-        function ajaxData(){
-        var data={};
-        data.username = document.getElementById("username").value;
-        data.password = document.getElementById("password").value;
-        data = JSON.stringify(data);
+     function ajaxData(typeRequest, url, callback, objectToSend){
         $.ajax({
-          url: "http://localhost:8083/login",
-          data: data,
-          type: "POST",
+          url: url,
+          data: objectToSend,
+          type: typeRequest,
           beforeSend: function(xhr){xhr.setRequestHeader('Content-type', 'application/json');},
-          success: function(data) { console.log(data); }
+          success: function(data) { callback(data); }
         });
       }
     </script>
@@ -98,7 +85,6 @@
           <div class="panel-heading">Login with your credentials</div>
           <br>
           <div class="panel-body">
-          <!--  <form action="/my-days-overview.html">-->
               <div class="input-group">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                 <input type="text" class="form-control" id="username" placeholder="Username" name="username">
@@ -116,7 +102,6 @@
               <div class="text-center">
                   <button type="submit" class="btn btn-primary btn-lg" onclick="loginUser()">Login</button>
               </div>
-<!--            </form>  -->
           </div>
         </div>
       </div>
