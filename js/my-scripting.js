@@ -8,3 +8,7 @@ function testRequest() {
     // xhttp.open("GET", "ajax_info.txt", true);
     // xhttp.send();
   }
+
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
