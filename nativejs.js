@@ -19,7 +19,8 @@
             return;
         }
         var dateObject = new Date(selectedDate);
-        var dateForPost = dateObject.getFullYear()+"-"+ ("0" + (dateObject.getMonth()+1)).slice(-2)+"-"+("0" + dateObject.getDate()).slice(-2);
+        var dateForPost = ("0" + dateObject.getDate()).slice(-2)+"/"+("0" + (dateObject.getMonth()+1)).slice(-2)+"/"+dateObject.getFullYear();
+//        var dateForPost = dateObject.getDate()+"/"+(dateObject.getMonth()+1)+"/"+dateObject.getFullYear();
         shData = {};
         shData.date = dateForPost;
         shData.employeeId = sessionStorage.getItem("loginUserDetails");
