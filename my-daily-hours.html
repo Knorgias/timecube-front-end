@@ -2,6 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <script src="bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+    <link rel="import" href="bower_components/polymer/polymer.html">
+    <!-- before the ag-grid web component -->
+    <!-- either ag-grid or ag-grid-enterprise, depending on which you're using -->
+    <!-- note: using noStyle version here as the you can't directly style anything in a shadow tree using a CSS rule
+    outside of the shadow tree -->
+    <script src="bower_components/ag-grid/dist/ag-grid.noStyle.js"></script>
+
+    <!-- ag-grid-polymer element -->
+    <link rel="import" href="bower_components/ag-grid-polymer/ag-grid-polymer.html">
+
+    <!-- our application -->
+    <link rel="import" href="./my_components/my-grid.html">
+
     <!-- My own styling -->
     <link rel="stylesheet" href="./css/my-styling.css">
     <!-- My own scripting -->
@@ -18,7 +32,6 @@
     <link href="./css/bootstrap-datetimepicker.css" rel="stylesheet" media="screen">
 
     <!-- Scripts for Datepicker -->
-    <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="./js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
     <script type="text/javascript" src="./js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
 
@@ -149,14 +162,32 @@
         </form>
       </div>
     </div>
-    <table id=hoursData>
-            <tr><th>date</th><th>message</th><th>hours</th><th>workplace</th><th>employeeId</th><th>activity</th></tr>
-    </table>  
-</div>      
-  <!-- My Hours Submit Form END -->
+</div>
+    <!-- My Hours Submit Form END -->
 
+    <!-- My workdays table -->
+    <div class="container col-md-8 col-md-offset-2">
+        <div class="panel panel-primary"> <!-- Offset for centering based on BS grid system -->
+            <div class="panel-body">            
+                <table class="table table-hover" id="hoursData">
+                    <thead style="color:#428bca">
+                        <tr>
+                            <th>date</th>
+                            <th>message</th>
+                            <th>hours</th>
+                            <th>workplace</th>
+                            <th>employeeId</th>
+                            <th>activity</th>
+                            <th>finalize</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-  </body>
+</body>
   <!-- Scripting for calendar element -->
   <script type="text/javascript">
     $('.form_date').datetimepicker({
