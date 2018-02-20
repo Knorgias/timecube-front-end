@@ -30,7 +30,7 @@
         ajaxData("POST", "http://localhost:8083/submitHours", callbackSubmitHours, shData);
     }
     function checkSessionLogin(origin){
-        var codeword = "tellme";
+        var codeword = "approved";
         var loginStatus = sessionStorage.getItem("loginDetails");  
         var loginId = sessionStorage.getItem("loginUserDetails");  
         if(origin == "index" && loginStatus == codeword+""+loginId){
@@ -48,10 +48,14 @@
       loginData = JSON.stringify(loginData);
       ajaxData("POST", "http://localhost:8083/login", callbackLoginResponse, loginData);
     }
+    function logoutUser(){
+        sessionStorage.setItem("loginDetails","loggedout");  
+        document.location = '/index.html'; 
+    }
     function callbackLoginResponse(response){
       if(response.statusCode == 0){
         document.location = '/my-days-overview.html'; 
-        sessionStorage.setItem("loginDetails","tellme"+response.id);       
+        sessionStorage.setItem("loginDetails","approved"+response.id);       
         sessionStorage.setItem("loginUserDetails",response.id);       
       }
       if(response.statusCode == 1){
