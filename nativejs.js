@@ -1,3 +1,24 @@
+   function registerUser(){
+        var registration = {};
+        registration.emailAddress = document.getElementById("email").value;
+        registration.username = document.getElementById("username").value;
+        registration.password = document.getElementById("password").value;
+        registration.role = document.getElementById("role-select").value;
+        registration.hourlyWage = document.getElementById("hourly-wage").value;
+        registration.daysOff = document.getElementById("daysoff").value;
+        registration.firstName = document.getElementById("name").value;
+        registration.lastName = document.getElementById("surname").value;
+        registration = JSON.stringify(registration);
+        ajaxData("POST", "http://localhost:8083/register", callbackRegistration, registration);
+    }
+    function callbackRegistration(response){
+        if(response.statusCode == 0){
+            document.location = '/index.html';
+        } else {
+            console.log(response);
+            alert("Not registered");
+        }
+    }
     // For my-daily-hours get-table
     function loadAllDataDailyHours(userId){
         ajaxData("GET", "http://localhost:8083/employee/"+userId+"/overviewHours", callbackGetAllHours, "");

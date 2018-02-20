@@ -2,9 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="import" href="./my_components/zeus-element.html">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- My own scripting -->
+    <script src="./js/my-scripting.js"></script>
+    <script src="nativejs.js"></script>
+
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -104,24 +107,20 @@
                 <!-- Employer select input -->
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <select class="form-control" title="Employer" id="employer-select">
-                        <option disabled>Select your employer...</option>
-                        <option value="YOUNG_COLFIELD">Young Colfield</option>
-                        <option value="ING">ING</option>
-                    </select>
+                    <input type="text" class="form-control" id="daysoff" placeholder="Days Off" name="hourly-wage">
                 </div>
                 <br>
                 <!-- Employer select input END -->
                 <!-- Role select input -->
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <select class="form-control" title="Employer" id="employer-select">
+                    <select class="form-control" title="Employer" id="role-select">
                         <option disabled>Select your role...</option>
-                        <option value="TRAINEE">Trainee</option>
-                        <option value="MANAGER">Manager</option>
-                        <option value="CEO">CEO</option>
-                        <option value="ING_MANAGER">ING Manager</option>
-                        <option value="ADMIN">Administrator</option>
+                        <option value="0">Trainee</option>
+                        <option value="1">Manager</option>
+                        <option value="2">CEO</option>
+                        <option value="3">ING Manager</option>
+                        <option value="4">Administrator</option>
                     </select>
                 </div>
                 <br>
@@ -133,7 +132,7 @@
                 <br> -->
                 <!-- Submit button -->
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                    <button type="button" class="btn btn-primary btn-lg" onclick=registerUser()>Register</button>
                 </div>
                 <!-- Submit button END -->
             </form>
