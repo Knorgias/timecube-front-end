@@ -11,39 +11,9 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="nativejs.js"></script>
     <script>
-     // window.onload = function () {
-          var loginStatus = sessionStorage.getItem("loginDetails");  
-          console.log(loginStatus);
-          if(loginStatus == "aproved"){
-            document.location = '/my-days-overview.html'; 
-          }
-      //}
-      function loginUser(){
-        var loginData={};
-        loginData.username = document.getElementById("username").value;
-        loginData.password = document.getElementById("password").value;
-        loginData = JSON.stringify(loginData);
-        ajaxData("POST", "http://localhost:8083/login", loginResponse, loginData);
-      }
-      function loginResponse(response){
-        if(response.statuCode == 0){
-          document.location = '/my-days-overview.html'; 
-          sessionStorage.setItem("loginDetails","aproved");       
-        }
-        if(response.statuCode == 1){
-          alert("You are not logged in correct");
-        }
-      }
-     function ajaxData(typeRequest, url, callback, objectToSend){
-        $.ajax({
-          url: url,
-          data: objectToSend,
-          type: typeRequest,
-          beforeSend: function(xhr){xhr.setRequestHeader('Content-type', 'application/json');},
-          success: function(data) { callback(data); }
-        });
-      }
+      checkSessionLogin('index');
     </script>
 
     <link href="./css/bootstrap-datetimepicker.css" rel="stylesheet" media="screen">

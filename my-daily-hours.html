@@ -22,6 +22,14 @@
     <script type="text/javascript" src="./js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
     <script type="text/javascript" src="./js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
 
+    <script src="nativejs.js"></script>
+    <script>
+        checkSessionLogin('dailyhours');
+        window.onload = function () {
+            loadAllDataDailyHours(sessionStorage.getItem("loginUserDetails"));
+        }
+    </script>
+
         <!-- Favicon code -->
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
@@ -135,14 +143,17 @@
           <br> -->
           <!-- Submit button -->
           <div class="text-center">
-              <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+              <button type="button" class="btn btn-primary btn-lg" onclick=saveDayInfo()>Submit</button>
           </div>
           <!-- Submit button END -->
         </form>
       </div>
     </div>
-  </div>      
+    <table id=hoursData>
+    </table>  
+</div>      
   <!-- My Hours Submit Form END -->
+
 
   </body>
   <!-- Scripting for calendar element -->
