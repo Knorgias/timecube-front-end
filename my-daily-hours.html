@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <!-- My own styling -->
     <link rel="stylesheet" href="./css/my-styling.css">
+    <!-- My own scripting -->
+    <script src="./js/my-scripting.js"></script>
 
-    <link rel="import" href="./my_components/zeus-element.html">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -78,7 +79,7 @@
           <!-- Calendar day selection-->
           <div class="form-group">
               <div class="input-group date form_date col-md-12" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                <span class="input-group-addon">Day:</span>
+                <span class="input-group-addon"><a href="#" data-toggle="tooltip" data-placement="left" title="Hooray!">Day:</a></span>
                 <input id="myDate" class="form-control" size="16" type="text" value="" readonly>
                 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                 <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
@@ -106,8 +107,9 @@
                   <option disabled>Select your activity...</option>
                   <option value="0">Work</option>
                   <option value="1">Study</option>
-                  <option value="2">Holiday</option>
-                  <option value="3">Sick</option>
+                  <option value="2">Day off</option>
+                  <option value="3">Holiday</option>
+                  <option value="4">Sick</option>
               </select>
           </div>
           <br>

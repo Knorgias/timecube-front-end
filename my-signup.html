@@ -47,7 +47,7 @@
       <!-- My page Header END -->
 
       <!-- My Signup form -->
-      <div class="container col-md-4 col-md-offset-4">
+      <div class="container col-md-8 col-md-offset-2">
         <div class="panel panel-primary">
           <div class="panel-heading">Create an account </div>
           <div class="panel-body">
@@ -73,6 +73,13 @@
                 </div>
                 <br>
                 <!-- Username input END -->
+                <!-- Email input -->
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+                </div>
+                <br>
+                <!-- Username input END -->
                 <!-- Password input -->
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>       
@@ -87,17 +94,39 @@
                 </div>
                 <br>
                 <!-- Password retype input END -->
+                <!-- Hourly wage input -->
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>       
+                    <input type="text" class="form-control" id="hourly-wage" placeholder="Hourly wage" name="hourly-wage">
+                </div>
+                <br>
+                <!-- Hourly wage input END -->
                 <!-- Employer select input -->
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                     <select class="form-control" title="Employer" id="employer-select">
                         <option disabled>Select your employer...</option>
-                        <option value="YC">Young Colfield</option>
+                        <option value="YOUNG_COLFIELD">Young Colfield</option>
                         <option value="ING">ING</option>
                     </select>
                 </div>
                 <br>
                 <!-- Employer select input END -->
+                <!-- Role select input -->
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <select class="form-control" title="Employer" id="employer-select">
+                        <option disabled>Select your role...</option>
+                        <option value="TRAINEE">Trainee</option>
+                        <option value="MANAGER">Manager</option>
+                        <option value="CEO">CEO</option>
+                        <option value="ING_MANAGER">ING Manager</option>
+                        <option value="ADMIN">Administrator</option>
+                    </select>
+                </div>
+                <br>
+                <!-- Role select input END -->
+
                 <!-- <div class="text-center">
                         <label><input type="checkbox" name="remember"> Remember me</label>
                 </div>
