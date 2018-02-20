@@ -105,11 +105,11 @@
               <span class="input-group-addon">Activity:</i></span>
               <select class="form-control" title="Activity" id="activity-select">
                   <option disabled>Select your activity...</option>
-                  <option value="WORK">Work</option>
-                  <option value="STUDY">Study</option>
-                  <option value="DAYOFF">Day off</option>
-                  <option value="HOLIDAY">Holiday</option>
-                  <option value="SICK">Sick</option>
+                  <option value="0">Work</option>
+                  <option value="1">Study</option>
+                  <option value="2">Day off</option>
+                  <option value="3">Holiday</option>
+                  <option value="4">Sick</option>
               </select>
           </div>
           <br>
@@ -118,7 +118,7 @@
           <!-- Hours select input -->
           <div class="input-group">
               <div class="input-group-addon">Hours:</i></div>
-              <select class="form-control" title="Activity" id="activity-select">
+              <select class="form-control" title="Activity" id="hours-select">
                   <option disabled>Select your hours...</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -150,6 +150,7 @@
       </div>
     </div>
     <table id=hoursData>
+            <tr><th>date</th><th>message</th><th>hours</th><th>workplace</th><th>employeeId</th><th>activity</th></tr>
     </table>  
 </div>      
   <!-- My Hours Submit Form END -->
