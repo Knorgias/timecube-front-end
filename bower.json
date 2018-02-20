@@ -6,7 +6,9 @@
     "iron-input": "PolymerElements/iron-input#^2.0.1",
     "paper-button": "PolymerElements/paper-button#^2.0.0",
     "iron-ajax": "PolymerElements/iron-ajax#^2.1.1",
-    "paper-toolbar": "PolymerElements/paper-toolbar#^2.0.0"
+    "paper-toolbar": "PolymerElements/paper-toolbar#^2.0.0",
+    "ag-grid": "12.0.0",
+    "ag-grid-polymer": "12.0.0"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",

@@ -1,4 +1,4 @@
-    function registerUser(){
+   function registerUser(){
         var registration = {};
         registration.emailAddress = document.getElementById("email").value;
         registration.username = document.getElementById("username").value;
@@ -19,6 +19,7 @@
             alert("Not registered");
         }
     }
+    // For my-daily-hours get-table
     function loadAllDataDailyHours(userId){
         ajaxData("GET", "http://localhost:8083/employee/"+userId+"/overviewHours", callbackGetAllHours, "");
     }
@@ -27,12 +28,22 @@
         console.log(data);
         for(var x=0;x<data.length; x++){
             document.getElementById("hoursData").innerHTML = document.getElementById("hoursData").innerHTML + 
-            "<tr><td>"+data[x].date+"</td><td>"+data[x].message+"</td><td>"+data[x].hours+"</td><td>"+data[x].workplace+"</td><td>"+data[x].employeeId+"</td><td>"+data[x].activity+"</td></tr>";
+            "<tr><td>"+data[x].date+
+            "</td><td>"+data[x].message+
+            "</td><td>"+data[x].hours+
+            "</td><td>"+data[x].workplace+
+            "</td><td>"+data[x].employeeId+
+            "</td><td>"+data[x].activity+
+            '</td><td><button type="button" class="btn btn-success">OK</button>'+
+            "</td></tr>";
         }
     }
+    function createWorkdayRow(){}
+
     function callbackSubmitHours(data){
         document.location = '/my-daily-hours.html'; 
     }
+    // For my-daily-hours get-table END
     function saveDayInfo(){
         var selectedDate = document.getElementById("myDate").value;
         if(selectedDate == ""){
