@@ -7,8 +7,6 @@
         for(var x=0;x<data.length; x++){
             document.getElementById("hoursData").innerHTML = document.getElementById("hoursData").innerHTML + 
             "<tr><td>"+data[x].date+"</td><td>"+data[x].message+"</td><td>"+data[x].hours+"</td></tr>";
-
-            
         }
     }
     function callbackSubmitHours(data){
@@ -25,7 +23,8 @@
         shData = {};
         shData.date = dateForPost;
         shData.employeeId = sessionStorage.getItem("loginUserDetails");
-        shData.hours = 6;
+//        shData.hours = document.getElementById("activity-select").value;
+//        shData.workplace = document.getElementById("employer-select").value
         shData = JSON.stringify(shData);
         ajaxData("POST", "http://localhost:8083/submitHours", callbackSubmitHours, shData);
     }
