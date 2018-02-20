@@ -6,7 +6,7 @@
         console.log(data);
         for(var x=0;x<data.length; x++){
             document.getElementById("hoursData").innerHTML = document.getElementById("hoursData").innerHTML + 
-            "<tr><td>"+data[x].date+"</td><td>"+data[x].message+"</td><td>"+data[x].hours+"</td></tr>";
+            "<tr><td>"+data[x].date+"</td><td>"+data[x].message+"</td><td>"+data[x].hours+"</td><td>"+data[x].workplace+"</td><td>"+data[x].employeeId+"</td><td>"+data[x].activity+"</td></tr>";
         }
     }
     function callbackSubmitHours(data){
@@ -20,12 +20,12 @@
         }
         var dateObject = new Date(selectedDate);
         var dateForPost = ("0" + dateObject.getDate()).slice(-2)+"/"+("0" + (dateObject.getMonth()+1)).slice(-2)+"/"+dateObject.getFullYear();
-//        var dateForPost = dateObject.getDate()+"/"+(dateObject.getMonth()+1)+"/"+dateObject.getFullYear();
         shData = {};
         shData.date = dateForPost;
+        shData.activity = document.getElementById("activity-select").value;
+        shData.workplace = document.getElementById("employer-select").value
+        shData.hours = document.getElementById("hours-select").value;
         shData.employeeId = sessionStorage.getItem("loginUserDetails");
-//        shData.hours = document.getElementById("activity-select").value;
-//        shData.workplace = document.getElementById("employer-select").value
         shData = JSON.stringify(shData);
         ajaxData("POST", "http://localhost:8083/submitHours", callbackSubmitHours, shData);
     }
