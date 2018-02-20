@@ -1,0 +1,54 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+
+
+<dom-module id="user-signup">
+  <!-- My Template -->
+  <template>
+    <!-- My styles -->
+    <style>
+        :host{
+
+        }
+    </style>
+    <!-- My styles END -->
+
+    <!-- My AJAX elements -->
+    <paper-button class="custom blue" on-click="startajax">REFRESH</paper-button>
+    <iron-ajax id="ajaxyc" handle-as="json" on-response="handleResponse"></iron-ajax>
+    <!-- My AJAX elements END -->
+
+  </template>
+  <!-- My Template END -->
+
+  <!-- My scripts -->
+  <script>
+    class UserSignup extends Polymer.Element {
+      static get is() { return 'user-signup'; }
+      static get properties() {
+        return {
+            user:{
+              type: Array,
+              value:[]
+            }
+        };
+      }
+
+      startajax(){
+        console.log("AJAX Started");
+        var ajax = this.$.ajaxyc;
+        ajax.url = "http://localhost:8083/register";
+        ajax.generateRequest();
+      }
+      
+      handleResponse(response){
+        console.log(response);
+      }
+    }
+
+    window.customElements.define(UserSignup.is, UserSignup);
+  </script>
+  <!-- My scripts END -->
+
+</dom-module>
