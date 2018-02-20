@@ -1,6 +1,6 @@
 // My test GET request to the back-end
-function testRequest() {
-    console.log("I'm alive!");
+function getOvierview() {
+    console.log("getOverview function executed ");
     // var xhttp = new XMLHttpRequest();
     // xhttp.onreadystatechange = function() {
     //     alert(this.responseText);
@@ -9,9 +9,9 @@ function testRequest() {
     // xhttp.send();
   }
 
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
-});
+// $(document).ready(function(){
+//     $('[data-toggle="tooltip"]').tooltip(); 
+// });
 
  //     function ajaxData(typeRequest, url, callback, objectToSend){
     // function getOvierview(){
@@ -27,16 +27,16 @@ $(document).ready(function(){
     //         success: function(data) { console.log(data); }
     //     });
     // }
-    function getOvierview(){
-        var workdays={};
-        $.ajax({
-            url: "http://localhost:8083//employee/1/overviewHours",
-            workdays: workdays,
-            type: "GET",
-            beforeSend: function(xhr){xhr.setRequestHeader('Content-type', 'application/json');},
-            success: function(workdays) { 
-                console.log(workdays);
+    // function getOvierview(){
+    //     var workdays={};
+    //     $.ajax({
+    //         url: "http://localhost:8083//employee/1/overviewHours",
+    //         workdays: workdays,
+    //         type: "GET",
+    //         beforeSend: function(xhr){xhr.setRequestHeader('Content-type', 'application/json');},
+    //         success: function(workdays) { 
+    //             console.log(data);
 
-            }
-        });
-    }
+    //         }
+    //     });
+    // }
