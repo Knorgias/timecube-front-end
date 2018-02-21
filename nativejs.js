@@ -86,9 +86,11 @@
     }
     function callbackLoginResponse(response){
       if(response.statusCode == 0){
-        document.location = '/my-days-overview.html'; 
         sessionStorage.setItem("loginDetails","approved"+response.id);       
-        sessionStorage.setItem("loginUserDetails",response.id);       
+        sessionStorage.setItem("loginUserDetails",response.id);
+        sessionStorage.setItem("roleInfo", response.role);
+        document.location = '/my-days-overview.html';
+    
       }
       if(response.statusCode == 1){
         alert("You are not logged in correct");
