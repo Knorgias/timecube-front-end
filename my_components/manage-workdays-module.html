@@ -23,7 +23,7 @@
 
     <h1>Hello manage workdays</h1>
     <template is="dom-repeat" items="[[workdays]]">
-            data: [[item.employeeId]] go [[item.date]] <br>
+            data: [[item.employeeId]] go [[item.date]] at [[item.workplace]]<br>
         </template>
         <iron-ajax id="ajaxyc" handle-as="json" on-response="handleResponse"></iron-ajax>
     </template>
