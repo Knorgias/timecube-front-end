@@ -9,21 +9,40 @@
     <!-- My styles -->
     <style>
         :host{
+        }
 
+        paper-button {
+          font-size: xx-large;
+          border: 2px solid black;
         }
     </style>
     <!-- My styles END -->
 
     <!-- My DOM-repeat -->
-    <ul id="my-workdays">
-        <template is="dom-repeat" items="[[workdays]]">
-            <li on-click="_shazam">[[item]]</li>
-        </template>
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <td>Column</td>
+          <td>Column</td>
+          <td><paper-button class="custom blue" on-click="startajax">REFRESH</paper-button></td>
+        </tr>
+      </thead>
+      <tbody>
+            <template is="dom-repeat" items="[[workdays]]">
+              <tr>
+                <td on-click="_shazam">[[item.date]]</td>
+                <td on-click="_shazam">[[item.employeeId]]</td>
+                <td on-click="_shazam">[[item.hours]]</td>
+                <td on-click="_shazam">[[item.lastWorkplace]]</td>
+                <td on-click="_shazam">[[item.message ]]</td>
+              </tr>
+            </template>
+      </tbody>
+    </table>
     <!-- My DOM-repeat END -->
 
     <!-- My AJAX elements -->
-    <paper-button class="custom blue" on-click="startajax">REFRESH</paper-button>
+    
     <iron-ajax id="ajaxyc" handle-as="json" on-response="handleResponse"></iron-ajax>
     <!-- My AJAX elements END -->
 
@@ -34,6 +53,10 @@
   <script>
     class WorkdaysOverview extends Polymer.Element {
       static get is() { return 'workdays-overview'; }
+      ready(){
+        super.ready();
+        this.startajax();
+      }
       static get properties() {
         return {
             workdays:{
@@ -51,9 +74,10 @@
       }
       
       handleResponse(response){
-        console.log(response);
+        console.log(response.detail.__data.response);
+        this.workdays = [];
         for(var x=0; x < response.detail.__data.response.length ; x++){
-          this.push('workdays', response.detail.__data.response[x].workplace);
+          this.push('workdays', response.detail.__data.response[x]);
         }
       }
     }
