@@ -21,6 +21,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
         checkSessionLogin('overview');
+        window.onload = function (){ 
+            if (sessionStorage.getItem("roleInfo") == "MANAGER") {
+                $("#manag").removeClass('disabled');
+            }
+    }
     </script>
     <link href="./css/bootstrap-datetimepicker.css" rel="stylesheet" media="screen">
         <!-- Favicon code -->
@@ -45,7 +50,7 @@
             <ul class="nav navbar-nav">
                 <li ><a href="/my-daily-hours.html">New Day</a></li>
                 <li class="active"><a href="/my-days-overview.html">Overview</a></li>
-                <li class="disabled"><a href="#">Management</a></li>
+                <li id="manag" class="disabled"><a href="#">Management</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                     <li><a href="/my-contact-info.html"><span class="glyphicon glyphicon-phone"></span> Contact Us</a></li>
