@@ -8,7 +8,7 @@
     <script src="nativejs.js"></script>
 
     <!-- My Polymer Elements -->
-    <link rel="import" href="my_components/hours-overview.html">
+    <link rel="import" href="my_components/workdays-overview.html">
     <!-- My Polymer Elements END -->
 
     <!-- Latest compiled and minified CSS -->
@@ -50,7 +50,7 @@
             <ul class="nav navbar-nav">
                 <li ><a href="/my-daily-hours.html">New Day</a></li>
                 <li class="active"><a href="/my-days-overview.html">Overview</a></li>
-                <li id="manag" class="disabled"><a href="#">Management</a></li>
+                <li id="manag" class="disabled"><a href="/manage-workdays.html">Management</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                     <li><a href="/my-contact-info.html"><span class="glyphicon glyphicon-phone"></span> Contact Us</a></li>
@@ -98,72 +98,8 @@
     </div>
     <!-- My personal details container END -->
 
-    <!-- My Overview table container -->
-    <div class="container-fluid col-md-8 col-md-offset-2">
-        <div class="panel panel-primary"> <!-- Offset for centering based on BS grid system -->
-            <div class="panel-body">
-                <table class="table table-hover">
-                    <thead style="color:#428bca">
-                        <tr>
-                            <th>Date</th>
-                            <th>Employer</th>
-                            <th>Activity</th>
-                            <th>Hours</th>
-                            <th>Comments</th>
-                            <th>State</th>
-                            <th><button class="btn btn-primary" onclick="getOvierview()">Refresh</button></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>02-01-2018</td>
-                            <td>QNH</td>
-                            <td>Beschikbar</td>
-                            <td>8</td>
-                            <td>Intro day</td>
-                            <td><input type="checkbox" value=""></td>
-                        </tr>
-                        <tr>
-                            <td>03-01-2018</td>
-                            <td>ING</td>
-                            <td>Normal</td>
-                            <td>8</td>
-                            <td>Workday</td>
-                            <td><input type="checkbox" value=""></td>
-                        </tr>
-                        <tr>
-                            <td>04-01-2018</td>
-                            <td>ING</td>
-                            <td>Normal</td>
-                            <td>8</td>
-                            <td>Workday</td>
-                            <td><input type="checkbox" value=""></td>
-                        </tr>
-                        <tr>
-                            <td>05-01-2018</td>
-                            <td>ING</td>
-                            <td>Normal</td>
-                            <td>8</td>
-                            <td>Workday</td>
-                            <td><input type="checkbox" value=""></td>
-                        </tr>
-                        <tr>
-                            <td>06-01-2018</td>
-                            <td>ING</td>
-                            <td>Normal</td>
-                            <td>8</td>
-                            <td>Workday</td>
-                            <td><input type="checkbox" value=""></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <!-- My Overview table container END -->
-
     <!-- My Polymer workdays GET Request -->
-    <hours-overview></hours-overview>
+    <workdays-overview></workdays-overview>
     <!-- My Polymer workdays GET Request END -->
 </body>
 </html>
