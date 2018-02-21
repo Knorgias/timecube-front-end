@@ -115,7 +115,7 @@
         console.log("AJAX Started");
         var ajax = this.$.ajaxyc;
         var loginId = sessionStorage.getItem("loginUserDetails");
-        ajax.url = "http://localhost:8083/employee/"+loginId+"/overviewHours";
+        ajax.url = "http://localhost:8083/employee/"+loginId+"/overviewHours/1";
         ajax.generateRequest();
       }
       
