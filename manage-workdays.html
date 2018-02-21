@@ -39,7 +39,9 @@
         checkSessionLogin('managehours');
         window.onload = function () {
             console.log("window onload of manage workdays");
-//            loadAllDataDailyHours(sessionStorage.getItem("loginUserDetails"));
+            if (sessionStorage.getItem("roleInfo") == "MANAGER") {
+                $("#manag").removeClass('disabled');
+            }
         }
     </script>
 
@@ -115,6 +117,8 @@
             </div>
         </div>
     </div>
+    <!-- My manage workdays Polymer Element -->
     <manage-workdays-module></manage-workdays-module>
+    <!-- My manage workdays Polymer Element END -->
 </body>
 </html>
