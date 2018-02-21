@@ -39,7 +39,9 @@
         checkSessionLogin('managehours');
         window.onload = function () {
             console.log("window onload of manage workdays");
-//            loadAllDataDailyHours(sessionStorage.getItem("loginUserDetails"));
+            if (sessionStorage.getItem("roleInfo") == "MANAGER") {
+                $("#manag").removeClass('disabled');
+            }
         }
     </script>
 
@@ -103,6 +105,5 @@
             </div>
         </div>
     </div>
-    
 </body>
 </html>

@@ -68,8 +68,6 @@
           <td>Employee</td>
           <td>Hours</td>
           <td>Workplace</td>
-          <td>Message</td>
-          
         </tr>
       </thead>
       <tbody>
@@ -79,7 +77,6 @@
                 <td on-click="_shazam">[[item.employeeId]]</td>
                 <td on-click="_shazam">[[item.hours]]</td>
                 <td on-click="_shazam">[[item.lastWorkplace]]</td>
-                <td on-click="_shazam">[[item.message ]]</td>
               </tr>
             </template>
       </tbody>
@@ -115,7 +112,7 @@
         console.log("AJAX Started");
         var ajax = this.$.ajaxyc;
         var loginId = sessionStorage.getItem("loginUserDetails");
-        ajax.url = "http://localhost:8083/employee/"+loginId+"/overviewHours";
+        ajax.url = "http://localhost:8083/employee/"+loginId+"/overviewHours/1";
         ajax.generateRequest();
       }
       
