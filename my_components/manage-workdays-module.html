@@ -1,0 +1,68 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+
+
+<dom-module id="manage-workdays-module">
+  <!-- My Template -->
+  <template>
+    <!-- My styles -->
+    <style>
+        :host{
+
+        }
+    </style>
+    <!-- My styles END -->
+
+    <!-- My DOM-repeat -->
+    <!-- My DOM-repeat END -->
+
+    <!-- My AJAX elements -->
+    <!-- My AJAX elements END -->
+
+
+    <h1>Hello manage workdays</h1>
+    <template is="dom-repeat" items="[[workdays]]">
+            data: [[item.employeeId]] go [[item.date]] <br>
+        </template>
+        <iron-ajax id="ajaxyc" handle-as="json" on-response="handleResponse"></iron-ajax>
+    </template>
+
+  <!-- My Template END -->
+
+  <!-- My scripts -->
+  <script>
+    class ManageWorkdaysModule extends Polymer.Element {
+      static get is() { return 'manage-workdays-module'; }
+      static get properties() {
+        return {
+            workdays:{
+              type: Array,
+              value:[]
+            }
+        };
+      }
+      ready(){
+          super.ready();
+          this.startajax();
+      }
+      startajax(){
+        console.log("AJAX Started");
+        var ajax = this.$.ajaxyc;
+        ajax.url = "http://localhost:8083/employee/overviewHours";
+        ajax.generateRequest();
+      }
+      
+      handleResponse(response){
+        console.log(response);
+        for(var x=0; x < response.detail.__data.response.length ; x++){
+          this.push('workdays', response.detail.__data.response[x]);
+        }
+      }
+    }
+
+    window.customElements.define(ManageWorkdaysModule.is, ManageWorkdaysModule);
+  </script>
+  <!-- My scripts END -->
+
+</dom-module>
