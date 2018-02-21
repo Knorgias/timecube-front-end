@@ -6,26 +6,87 @@
 <dom-module id="manage-workdays-module">
   <!-- My Template -->
   <template>
-    <!-- My styles -->
+    <!-- My styling -->
     <style>
-        :host{
+      :host{
+      }
 
-        }
+      paper-button {
+        border: 2px solid;
+        border-color: #2e6da4;
+        border-radius: 5px;
+        background-color: #337ab7;
+        color: white;
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+      }
+      .my-info {
+        font-family: arial, sans-serif;
+        border: 2px solid #428bca;
+        border-radius: 5px;
+        border-collapse: collapse;
+        width: 64%;
+        margin: auto;
+        margin-bottom: 60px;
+      }
+
+      paper-button:hover{
+        background-color: #1e4797;
+      }
+
+      thead {
+        border-bottom: 2px solid #428bca;
+      }
+
+      td, th {
+          /* border: 1px solid #dddddd; */
+          text-align: left;
+          padding: 8px;
+      }
+      caption {
+          border: 1px solid #428bca;
+          border-radius: 5px;
+          text-align: right;
+          padding: 8px;
+      }
+
+      tr:nth-child(even) {
+          background-color: #dddddd;
+      }
     </style>
-    <!-- My styles END -->
+    <!-- My styling END -->
 
     <!-- My DOM-repeat -->
-    <!-- My DOM-repeat END -->
-
-    <!-- My AJAX elements -->
-    <!-- My AJAX elements END -->
-
-
-    <h1>Hello manage workdays</h1>
-    <template is="dom-repeat" items="[[workdays]]">
-            data: [[item.employeeId]] go [[item.date]] at [[item.workplace]]<br>
+    <table class="my-info">
+      <caption></tr><paper-button class="custom blue" on-click="startajax">Refresh</paper-button></caption>
+      <thead>
+        <tr>
+          <td>Date</td>
+          <td>Workplace</td>
+          <td>Activity</td>
+          <td>Hours</td>
+        </tr>
+      </thead>
+      <tbody>
+        <template is="dom-repeat" items="[[workdays]]">
+            <tr>
+              <td>[[item.date]]</td>
+              <td>[[item.workplace]]</td>
+              <td>[[item.activity]]</td>
+              <td>[[item.hours]]</td>
+            </tr>
         </template>
-        <iron-ajax id="ajaxyc" handle-as="json" on-response="handleResponse"></iron-ajax>
+      </tbody>
+    </table>
+    <!-- My DOM-repeat END -->
+      <iron-ajax id="ajaxyc" handle-as="json" on-response="handleResponse"></iron-ajax>
     </template>
 
   <!-- My Template END -->
@@ -54,7 +115,8 @@
       }
       
       handleResponse(response){
-        console.log(response);
+        console.log(response.detail.__data.response);
+        this.workdays = [];
         for(var x=0; x < response.detail.__data.response.length ; x++){
           this.push('workdays', response.detail.__data.response[x]);
         }

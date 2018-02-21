@@ -1,4 +1,12 @@
     var baseurl = "http://localhost:8083";
+
+    checkSessionLogin('overview');
+    window.onload = function (){ 
+        if (sessionStorage.getItem("roleInfo") == "MANAGER") {
+            $("#manag").removeClass('disabled');
+        }
+    }
+
     function registerUser(){
         var registration = {};
         registration.emailAddress = document.getElementById("email").value;
