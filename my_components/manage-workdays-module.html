@@ -11,6 +11,12 @@
         :host{
 
         }
+        table{
+          width:100%;
+        }
+        td{
+          text-align: center;
+        }
     </style>
     <!-- My styles END -->
 
@@ -20,12 +26,28 @@
     <!-- My AJAX elements -->
     <!-- My AJAX elements END -->
 
-
-    <h1>Hello manage workdays</h1>
-    <template is="dom-repeat" items="[[workdays]]">
-            data: [[item.employeeId]] go [[item.date]] at [[item.workplace]]<br>
+    <table class="table table-hover" id="hoursData">
+      <thead style="color:#428bca">
+          <tr>
+              <th>date</th>
+              <th>message</th>
+              <th>hours</th>
+              <th>workplace</th>
+              <th>employeeId</th>
+              <th>activity</th>
+              <th>finalize</th>
+          </tr>
+      </thead>
+        <template is="dom-repeat" items="[[workdays]]">
+          <tr><td>[[item.date]]</td><td>[[item.message]]</td><td>[[item.hours]]</td><td>[[item.workplace]]</td><td>[[item.employeeId]]</td><td>[[item.activity]]</td><td>[[item.finalized]]</td></tr>
         </template>
-        <iron-ajax id="ajaxyc" handle-as="json" on-response="handleResponse"></iron-ajax>
+  
+      </tbody>
+  </table>
+
+      <tbody>
+      </tbody>  
+      <iron-ajax id="ajaxyc" handle-as="json" on-response="handleResponse"></iron-ajax>
     </template>
 
   <!-- My Template END -->
