@@ -3,7 +3,7 @@
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 
 
-<dom-module id="hours-overview">
+<dom-module id="workdays-overview">
   <!-- My Template -->
   <template>
     <!-- My styles -->
@@ -32,8 +32,8 @@
 
   <!-- My scripts -->
   <script>
-    class HoursOverview extends Polymer.Element {
-      static get is() { return 'hours-overview'; }
+    class WorkdaysOverview extends Polymer.Element {
+      static get is() { return 'workdays-overview'; }
       static get properties() {
         return {
             workdays:{
@@ -58,7 +58,7 @@
       }
     }
 
-    window.customElements.define(HoursOverview.is, HoursOverview);
+    window.customElements.define(WorkdaysOverview.is, WorkdaysOverview);
   </script>
   <!-- My scripts END -->
 
