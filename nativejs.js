@@ -1,4 +1,5 @@
-   function registerUser(){
+    var baseurl = "http://localhost:8083";
+    function registerUser(){
         var registration = {};
         registration.emailAddress = document.getElementById("email").value;
         registration.username = document.getElementById("username").value;
@@ -9,7 +10,7 @@
         registration.firstName = document.getElementById("name").value;
         registration.lastName = document.getElementById("surname").value;
         registration = JSON.stringify(registration);
-        ajaxData("POST", "http://localhost:8083/register", callbackRegistration, registration);
+        ajaxData("POST", baseurl +"/register", callbackRegistration, registration);
     }
     function callbackRegistration(response){
         if(response.statusCode == 0){
@@ -21,7 +22,8 @@
     }
     // For my-daily-hours get-table
     function loadAllDataDailyHours(userId){
-        ajaxData("GET", "http://localhost:8083/employee/"+userId+"/overviewHours", callbackGetAllHours, "");
+        console.log("userId:"+userId+":url:"+baseurl);
+        ajaxData("GET", baseurl +"/employee/"+userId+"/overviewHours/0", callbackGetAllHours, "");
     }
     function callbackGetAllHours(data){
         console.log("callbackGetAllHours");
@@ -29,14 +31,26 @@
         for(var x=0;x<data.length; x++){
             document.getElementById("hoursData").innerHTML = document.getElementById("hoursData").innerHTML + 
             "<tr><td>"+data[x].date+
-            "</td><td>"+data[x].message+
+            "</td><td>"+data[x].finalized+
             "</td><td>"+data[x].hours+
             "</td><td>"+data[x].workplace+
             "</td><td>"+data[x].employeeId+
             "</td><td>"+data[x].activity+
-            '</td><td><button type="button" class="btn btn-success">OK</button>'+
+            '</td><td><button type="button" class="btn btn-success" onclick="finalizeHours(\''+data[x].date+'\','+data[x].employeeId+')">OK</button>'+
             "</td></tr>";
         }
+    }
+    function finalizeHours(workdate, employeeId){
+        workdayData = {};
+        workdayData.date = workdate;
+        workdayData.employeeId = employeeId;
+        workdayData.finalized = true;
+        workdayData = JSON.stringify(workdayData);
+        ajaxData("POST", baseurl +"/submitHours", callbackFinalizeHours, workdayData);
+    }
+    function callbackFinalizeHours(data){
+        console.log(data);
+        document.location = '/my-daily-hours.html';
     }
     function createWorkdayRow(){}
 
@@ -59,7 +73,7 @@
         shData.hours = document.getElementById("hours-select").value;
         shData.employeeId = sessionStorage.getItem("loginUserDetails");
         shData = JSON.stringify(shData);
-        ajaxData("POST", "http://localhost:8083/submitHours", callbackSubmitHours, shData);
+        ajaxData("POST", baseurl +"/submitHours", callbackSubmitHours, shData);
     }
     function checkSessionLogin(origin){
         var codeword = "approved";
@@ -78,7 +92,7 @@
       loginData.username = document.getElementById("username").value;
       loginData.password = document.getElementById("password").value;
       loginData = JSON.stringify(loginData);
-      ajaxData("POST", "http://localhost:8083/login", callbackLoginResponse, loginData);
+      ajaxData("POST", baseurl +"/login", callbackLoginResponse, loginData);
     }
     function logoutUser(){
         sessionStorage.setItem("loginDetails","loggedout");  
