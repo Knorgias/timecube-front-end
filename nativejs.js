@@ -1,10 +1,20 @@
     var baseurl = "http://localhost:8083";
 
-    checkSessionLogin('overview');
-    window.onload = function (){ 
-        if (sessionStorage.getItem("roleInfo") == "MANAGER") {
-            $("#manag").removeClass('disabled');
-        }
+    function fillUserOverviewInfo() {
+        var info = sessionStorage.getItem("loginUserInfo");
+        var d = new Date();
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+        var myDate = (day<10 ? '0' : '') + day + '/' +
+            (month<10 ? '0' : '') + month + '/' +
+            d.getFullYear();
+        console.log(info);
+        $("#userInfo").append(
+            '<tr>'+
+                '<td class="col-md-6">Name: &nbsp&nbsp'+' My User'+'</td>'+
+                '<td class="col-md-6">Date: &nbsp&nbsp'+  myDate +'</td>'+
+            '</tr>'
+        );
     }
 
     function registerUser(){
@@ -109,13 +119,13 @@
     function callbackLoginResponse(response){
       if(response.statusCode == 0){
         sessionStorage.setItem("loginDetails","approved"+response.id);       
-        sessionStorage.setItem("loginUserDetails",response.id);       
+        sessionStorage.setItem("loginUserDetails",response.id);
         sessionStorage.setItem("roleInfo", response.role);
         sessionStorage.setItem("loginUserInfo", response);
         document.location = '/my-days-overview.html';
       }
       if(response.statusCode == 1){
-        alert("You are not logged in correct");
+        alert("You are not logged in correctly");
       }
     }
    function ajaxData(typeRequest, url, callback, objectToSend){
