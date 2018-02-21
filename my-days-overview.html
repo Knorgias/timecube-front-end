@@ -70,7 +70,7 @@
         <div class="panel panel-primary">
             <div class="panel-heading" data-toggle="tooltip" title="Brief information on your account">My info</div>
             <div class="panel-body">
-                <table class="table">
+                <table class="table" id="userInfo">
                     <thead>
                         <!-- <tr>
                         <th>Firstname</th>
@@ -79,18 +79,6 @@
                         </tr> -->
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="col-md-6">Name: K. Norgias</td>
-                            <td class="col-md-6">Date: 19-02-2018</td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-6">Sick days: 3/16</td>
-                            <td class="col-md-6">Monthly days registered: 20/22</td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-6">Leave days: 4/26</td>
-                            <td class="col-md-6">Monthly hours registered: 160</td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -102,4 +90,9 @@
     <workdays-overview></workdays-overview>
     <!-- My Polymer workdays GET Request END -->
 </body>
+<script>
+    $( document ).ready( function(){
+        fillUserOverviewInfo();
+    });
+</script>
 </html>
