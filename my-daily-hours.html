@@ -160,9 +160,11 @@
     <!-- My workdays table -->
     <div class="container col-md-8 col-md-offset-2">
         <div class="panel panel-primary"> <!-- Offset for centering based on BS grid system -->
-            <div class="panel-body">            
+            <div class="panel-body" id="myTable">          
+                <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                <br>  
                 <table class="table table-hover" id="hoursData">
-                    <thead style="color:#428bca">
+                    <thead id="myTableHead"style="color:#428bca">
                         <tr>
                             <th>date</th>
                             <th>message</th>
@@ -173,7 +175,7 @@
                             <th>finalize</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody id="myTableBody"></tbody>
                 </table>
             </div>
         </div>
@@ -192,5 +194,15 @@
       minView: 2,
       forceParse: 0
       });
+
+
+    $("#document").ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
   </script> 
 </html>
