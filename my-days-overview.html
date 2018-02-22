@@ -68,8 +68,13 @@
     <!-- My Personal details container -->
     <div class="container-fluid col-md-8 col-md-offset-2"> <!-- Offset for centering based on BS grid system -->
         <div class="panel panel-primary">
-            <div class="panel-heading" data-toggle="tooltip" title="Brief information on your account">My info</div>
-            <div class="panel-body">
+            <div class="panel-heading" data-toggle="tooltip" title="Brief information on your account">
+                My info
+                <button class="btn btn-success col-md-offset-10" data-toggle="collapse" data-target="#myInfo">
+                    Toggle
+                </button>
+            </div>
+            <div class="panel-body collapse in" id="myInfo">
                 <table class="table" id="userInfo">
                     <thead>
                         <!-- <tr>

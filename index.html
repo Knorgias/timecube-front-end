@@ -50,27 +50,45 @@
       </div>
       <!-- My Header END -->
       <!-- My Login form -->
-      <div class="container col-md-4 col-md-offset-4">
+      <div class="container col-md-4 col-md-offset-4" id="loginForm">
         <div class="panel panel-primary">
           <div class="panel-heading">Login with your credentials</div>
           <br>
-          <div class="panel-body">
-              <div class="input-group">
+          <div class="panel-body" >
+              <div class="input-group nameInput has-feedback">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                 <input type="text" class="form-control" id="username" placeholder="Username" name="username">
               </div>
               <br><br>
-              <div class="input-group">
+              <div class="input-group emailInput has-feedback">
                   <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>       
                   <input type="password" class="form-control" id="password" placeholder="Password" name="password">
               </div>
               <br>
               <div class="text-center">
-                  <button type="submit" class="btn btn-primary btn-lg" onclick="loginUser()">Login</button>
+                  <button type="submit" class="btn btn-primary btn-lg" onclick="validateForm()">Login</button>
               </div>
           </div>
         </div>
       </div>
       <!-- My Login form END -->
   </body>
+  <script>
+      function validateForm() {
+          if ( $("#username").val() == "" || $("#password").val() == "") {
+              $("#loginForm").append(
+                '<div class="alert alert-warning alert-dismissable fade in">'+
+                  '<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
+                  '<strong> Username & Password must be filled in! </strong>'+
+                '</div>'
+              );
+              setTimeout(function() {
+                $(".alert").fadeOut();
+            }, 3000);
+              return false;
+          } else {
+            loginUser();
+          }
+      }
+      </script>
 </html>
